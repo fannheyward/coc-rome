@@ -17,7 +17,14 @@ export async function activate(context: ExtensionContext): Promise<void> {
 		return;
 	}
 
-	const module = join(workspace.root, "node_modules/rome/bin/rome/index.js");
+	const module = join(
+		workspace.root,
+		"node_modules",
+		"rome",
+		"bin",
+		"rome",
+		"index.js",
+	);
 	if (!existsSync(module)) {
 		workspace.showMessage("No rome found in your project root.", "warning");
 		return;
