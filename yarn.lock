@@ -2515,10 +2515,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rome@^10.0.3-beta:
-  version "10.0.3-beta"
-  resolved "https://registry.yarnpkg.com/rome/-/rome-10.0.3-beta.tgz#631b7f1d3f2e951026dc04f96d68d3dd677c5b79"
-  integrity sha512-X/H8iZt+yJr1M9sU4F4sIBOBSUNZdlR2rZvIPNaOKkIT7lNvZSnTiLHVYsa6Ffc7COLa1pBbjSfCcx+7FZEp2A==
+rome@^10.0.4-beta:
+  version "10.0.4-beta"
+  resolved "https://registry.yarnpkg.com/rome/-/rome-10.0.4-beta.tgz#67f2605b11462496da68ef9b15cb7ff2f4965862"
+  integrity sha512-wDD/ZdImSt7Cg1/u3TxIBjIs56tEhPmXV/Rry1nExV+RogaLaF1IXTUbYNXDFzXBk9fEg+gnBovkY4WN/f41WQ==
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
