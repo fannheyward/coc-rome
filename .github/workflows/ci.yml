@@ -29,9 +29,9 @@ jobs:
       - name: Install yarn
         run: |
           curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-      - name: yarn build
+      - name: yarn install
         run: |
           yarn
-      - name: yarn check
+      - name: rome check
         run: |
-          yarn check
+          yarn run rome check

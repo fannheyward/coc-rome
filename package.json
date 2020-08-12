@@ -12,7 +12,6 @@
     "coc": "^0.0.77"
   },
   "scripts": {
-    "check": "rome check",
     "clean": "rimraf lib",
     "watch": "webpack --watch",
     "build": "webpack",
