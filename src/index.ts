@@ -1,51 +1,59 @@
+import {exec} from "child_process";
 import {
 	ExtensionContext,
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
 	TransportKind,
+	commands,
 	services,
 	workspace,
 } from "coc.nvim";
 import {existsSync} from "fs";
 import {join} from "path";
+import {promisify} from "util";
 
-export async function activate(context: ExtensionContext): Promise<void> {
-	const cfg = workspace.getConfiguration("rome");
-	const enabled = (cfg.get("enabled") as boolean);
-	if (!enabled) {
+const bin = join(
+	workspace.root,
+	"node_modules",
+	"rome",
+	"bin",
+	"rome",
+	"index.js",
+);
+
+async function romeInit(): Promise<void> {
+	const prompt = await workspace.showPrompt(
+		`Rome is found in your project, but configuration is missing, would you like to do 'rome init'?`,
+	);
+	if (!prompt) {
 		return;
 	}
 
-	const module = join(
-		workspace.root,
-		"node_modules",
-		"rome",
-		"bin",
-		"rome",
-		"index.js",
-	);
-	if (!existsSync(module)) {
+	const terminal = await workspace.createTerminal({cwd: workspace.root});
+	terminal.sendText(`${bin} init`);
+	await terminal.show(true);
+}
+
+export async function activate(context: ExtensionContext): Promise<void> {
+	const cfg = workspace.getConfiguration("rome");
+	const enable = (cfg.get("enable") as boolean);
+	if (!enable) {
+		return;
+	}
+
+	if (!existsSync(bin)) {
 		workspace.showMessage("No rome found in your project root.", "warning");
 		return;
 	}
 
 	const rjson = join(workspace.root, ".config/rome.rjson");
 	if (!existsSync(rjson)) {
-		const prompt = await workspace.showPrompt(
-			`Rome is found in your project, but configuration is missing, would you like to do 'rome init'?`,
-		);
-		if (!prompt) {
-			return;
-		}
-
-		const terminal = await workspace.createTerminal({cwd: workspace.root});
-		terminal.sendText(`${module} init`);
-		await terminal.show(true);
+		await romeInit();
 	}
 
 	const serverOptions: ServerOptions = {
-		module,
+		module: bin,
 		args: ["lsp"],
 		transport: TransportKind.stdio,
 	};
@@ -69,4 +77,14 @@ export async function activate(context: ExtensionContext): Promise<void> {
 		clientOptions,
 	);
 	context.subscriptions.push(services.registLanguageClient(client));
+
+	context.subscriptions.push(
+		commands.registerCommand(
+			"rome.cacheClear",
+			async () => {
+				const {stdout} = await promisify(exec)(`${bin} cache clear`);
+				workspace.showMessage(stdout);
+			},
+		),
+	);
 }

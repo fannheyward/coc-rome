@@ -40,12 +40,18 @@
       "type": "object",
       "title": "coc-rome configuration",
       "properties": {
-        "rome.enabled": {
+        "rome.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable coc-rome extension"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "rome.cacheClear",
+        "title": "rome cache clear"
+      }
+    ]
   }
 }

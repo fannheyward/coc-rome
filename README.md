@@ -8,6 +8,14 @@
 
 `:CocInstall coc-rome`
 
+## Configurations
+
+- `rome.enable`: enable coc-rome, default `true`
+
+## Commands
+
+- `rome.cacheClear`: run `rome cache clear` to clear all artifacts from the cache directory.
+
 ## License
 
 MIT
