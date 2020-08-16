@@ -33,6 +33,7 @@
     "onLanguage:javascriptreact",
     "onLanguage:typescript",
     "onLanguage:typescriptreact",
+    "onLanguage:rjson",
     "onLanguage:json"
   ],
   "contributes": {
