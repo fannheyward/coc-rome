@@ -47,7 +47,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 		return;
 	}
 
-	const rjson = join(workspace.root, ".config/rome.rjson");
+	const rjson = join(workspace.root, ".config", "rome.rjson");
 	if (!existsSync(rjson)) {
 		await romeInit();
 	}
