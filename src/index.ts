@@ -7,6 +7,7 @@ import {
 	TransportKind,
 	commands,
 	services,
+	window,
 	workspace,
 } from "coc.nvim";
 import {existsSync} from "fs";
@@ -35,7 +36,7 @@ function resolveRomeBin(): string {
 }
 
 async function romeInit(): Promise<void> {
-	const prompt = await workspace.showPrompt(
+	const prompt = await window.showPrompt(
 		`Rome is found in your project, but configuration is missing, would you like to do 'rome init'?`,
 	);
 	if (!prompt) {
@@ -72,7 +73,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 	};
 
 	const clientOptions: LanguageClientOptions = {
-		outputChannel: workspace.createOutputChannel("Rome"),
+		outputChannel: window.createOutputChannel("Rome"),
 		progressOnInitialization: true,
 		documentSelector: [
 			{scheme: "file", language: "javascript"},
@@ -96,7 +97,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
 			"rome.cacheClear",
 			async () => {
 				const {stdout} = await promisify(exec)(`${bin} cache clear`);
-				workspace.showMessage(stdout);
+				window.showMessage(stdout);
 			},
 		),
 	);
