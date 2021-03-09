@@ -13,32 +13,18 @@ import {
 import {existsSync} from "fs";
 import {join} from "path";
 import {promisify} from "util";
-import which from "which";
 
 function resolveRomeBin(): string {
 	// 1. rome.bin in coc-settings
-	// 2. $PATH
-	// 3. local node_modules
+	// 2. local node_modules
 	const cfg = workspace.getConfiguration("rome");
 	let bin = cfg.get<string>("bin");
 	if (bin && existsSync(bin)) {
 		return bin;
 	}
 
-	const local = join(
-		workspace.root,
-		"node_modules",
-		"rome",
-		"bin",
-		"rome",
-		"index.js",
-	);
-	bin = which.sync("rome", {nothrow: true}) || local;
-	if (bin && existsSync(bin)) {
-		return bin;
-	}
-
-	return "";
+	bin = join(workspace.root, "node_modules", "rome", "bin", "rome", "index.js");
+	return existsSync(bin) ? bin : "";
 }
 
 async function romeInit(): Promise<void> {

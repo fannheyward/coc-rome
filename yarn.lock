@@ -2,44 +2,27 @@
 # yarn lockfile v1
 
 
-"@types/node@^14.14.31":
+"@types/node@^14.14.32":
   version "14.14.32"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.32.tgz#90c5c4a8d72bbbfe53033f122341343249183448"
   integrity sha512-/Ctrftx/zp4m8JOujM5ZhwzlWLx22nbQJiVqz8/zE15gOeEW+uly3FSX4fGFpcfEvFzXcMCJwq9lGVWgyARXhg==
-
-"@types/which@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@types/which/-/which-2.0.0.tgz#446d35586611dee657120de8e0457382a658fc25"
-  integrity sha512-JHTNOEpZnACQdsTojWggn+SQ8IucfqEhtz7g8Z0G67WdSj4x3F0X5I2c/CVcl8z/QukGrIHeQ/N49v1au74XFQ==
 
 coc.nvim@^0.0.80:
   version "0.0.80"
   resolved "https://registry.yarnpkg.com/coc.nvim/-/coc.nvim-0.0.80.tgz#785145c382660db03f517f9b497900d95cbd0e4f"
   integrity sha512-/3vTcnofoAYMrdENrlQmADTzfXX4+PZ0fiM10a39UA37dTR2dpIGi9O469kcIksuunLjToqWG8S45AGx/9wV7g==
 
-esbuild@^0.8.54:
+esbuild@^0.8.57:
   version "0.8.57"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.57.tgz#a42d02bc2b57c70bcd0ef897fe244766bb6dd926"
   integrity sha512-j02SFrUwFTRUqiY0Kjplwjm1psuzO1d6AjaXKuOR9hrY0HuPsT6sV42B6myW34h1q4CRy+Y3g4RU/cGJeI/nNA==
-
-isexe@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
-  integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
 rome@^10.0.4-beta:
   version "10.0.4-beta"
   resolved "https://registry.yarnpkg.com/rome/-/rome-10.0.4-beta.tgz#67f2605b11462496da68ef9b15cb7ff2f4965862"
   integrity sha512-wDD/ZdImSt7Cg1/u3TxIBjIs56tEhPmXV/Rry1nExV+RogaLaF1IXTUbYNXDFzXBk9fEg+gnBovkY4WN/f41WQ==
 
-typescript@^4.0.2:
+typescript@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
   integrity sha512-qOcYwxaByStAWrBf4x0fibwZvMRG+r4cQoTjbPtUlrWjBHbmCAww1i448U0GJ+3cNNEtebDteo/cHOR3xJ4wEw==
-
-which@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"
-  integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
-  dependencies:
-    isexe "^2.0.0"
