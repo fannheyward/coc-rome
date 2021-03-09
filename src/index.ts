@@ -25,9 +25,15 @@ function resolveRomeBin(): string {
 		return bin;
 	}
 
-	bin =
-		which.sync("rome", {nothrow: true}) ||
-		join(workspace.root, "node_modules", "rome", "bin", "rome", "index.js");
+	const local = join(
+		workspace.root,
+		"node_modules",
+		"rome",
+		"bin",
+		"rome",
+		"index.js",
+	);
+	bin = which.sync("rome", {nothrow: true}) || local;
 	if (bin && existsSync(bin)) {
 		return bin;
 	}
