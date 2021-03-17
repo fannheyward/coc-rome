@@ -65,7 +65,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
 	};
 
 	const clientOptions: LanguageClientOptions = {
-		outputChannel: window.createOutputChannel("Rome"),
 		progressOnInitialization: true,
 		documentSelector: [
 			{scheme: "file", language: "javascript"},
