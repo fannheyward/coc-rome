@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/node": "^14.14.32",
     "coc.nvim": "^0.0.80",
-    "esbuild": "^0.9.0",
+    "esbuild": "^0.10.0",
     "rome": "^10.0.4-beta",
     "typescript": "^4.2.3"
   },
