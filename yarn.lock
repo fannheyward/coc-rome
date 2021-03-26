@@ -13,9 +13,9 @@ coc.nvim@^0.0.80:
   integrity sha512-/3vTcnofoAYMrdENrlQmADTzfXX4+PZ0fiM10a39UA37dTR2dpIGi9O469kcIksuunLjToqWG8S45AGx/9wV7g==
 
 esbuild@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.10.0.tgz#67dc5175930a0816802a5a6d35503d626a365889"
-  integrity sha512-g+/Fk18bP7GAx0eG2RTfvjbsdB6RSchvvrrokFX8UexrTtPo0ZF0R1KViUu5v0A4Uu8m3I7pZhEyZveiOk0/JA==
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.10.1.tgz#3616b5d3de7d6249b30874abe35ac1e7e1d75734"
+  integrity sha512-JSZpNt0sCb5KtUwHR3ddTY7T85xwasbqrVbxJ57iFOR00dCeD/HwAqIsUSXR1O9Nnt4z/7oWLasUCgBnhBFcdg==
 
 rome@^10.0.4-beta:
   version "10.0.4-beta"
