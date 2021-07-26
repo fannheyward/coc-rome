@@ -11,6 +11,7 @@
 ## Configurations
 
 - `rome.enable`: enable coc-rome, default `true`
+- `rome.bin`: custom rome binary path. By default, coc-rome only uses local rome binary in your project.
 
 ## Commands
 
