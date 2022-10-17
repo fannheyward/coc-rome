@@ -12,15 +12,14 @@
     "coc": "^0.0.80"
   },
   "scripts": {
-    "build": "node esbuild.js",
-    "prepare": "node esbuild.js"
+    "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json"
   },
   "devDependencies": {
-    "@types/node": "^16.0.0",
-    "coc.nvim": "^0.0.80",
-    "esbuild": "^0.12.0",
-    "rome": "^10.0.4-beta",
-    "typescript": "^4.2.3"
+    "@types/node": "^18.11.9",
+    "coc.nvim": "^0.0.83-next.9",
+    "esbuild": "^0.15.15",
+    "typescript": "^4.9.3"
   },
   "activationEvents": [
     "onLanguage:javascript",
@@ -53,5 +52,6 @@
         "title": "rome cache clear"
       }
     ]
-  }
+  },
+  "dependencies": {}
 }
