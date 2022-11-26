@@ -21,6 +21,7 @@
     "@types/node": "^18.11.9",
     "coc.nvim": "^0.0.83-next.9",
     "esbuild": "^0.15.15",
+    "rome": "^10.0.1",
     "typescript": "^4.9.3"
   },
   "activationEvents": [
@@ -72,7 +73,5 @@
     },
     "commands": []
   },
-  "dependencies": {
-    "rome": "^10.0.1"
-  }
+  "dependencies": {}
 }
