@@ -5,6 +5,8 @@ tsconfig.json
 .tags
 .DS_Store
 esbuild.js
+rome.json
+.vim
 webpack.config.js
 yarn.lock
 yarn-error.log

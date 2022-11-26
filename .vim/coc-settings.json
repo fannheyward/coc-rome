@@ -1,4 +1,3 @@
 {
-	"eslint.enable": false,
-	"coc.preferences.formatOnSaveFiletypes": []
+  "eslint.enable": false
 }
