@@ -34,7 +34,7 @@ jobs:
           yarn
       - name: rome format
         run: |
-          yarn fmt
+          yarn run fmt
       - name: rome check
         run: |
-          yarn lint
+          yarn run check
