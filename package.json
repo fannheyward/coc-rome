@@ -12,8 +12,10 @@
     "coc": "^0.0.80"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json"
+    "fmt": "rome format --write ./src",
+    "lint": "rome check ./src",
+    "build": "node esbuild.js",
+    "prepare": "node esbuild.js"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
@@ -25,11 +27,15 @@
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onLanguage:typescript",
-    "onLanguage:typescriptreact",
-    "onLanguage:rjson",
-    "onLanguage:json"
+    "onLanguage:typescriptreact"
   ],
   "contributes": {
+    "jsonValidation": [
+      {
+        "fileMatch": "rome.json",
+        "url": "./configuration_schema.json"
+      }
+    ],
     "configuration": {
       "type": "object",
       "title": "coc-rome configuration",
@@ -40,18 +46,33 @@
           "description": "Enable coc-rome extension"
         },
         "rome.bin": {
-          "type": "string",
-          "default": "",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
           "description": "Custom rome binary path"
+        },
+        "rome.trace.server": {
+          "type": "string",
+          "default": "off",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "enumDescriptions": [
+            "No traces",
+            "Error only",
+            "Full log"
+          ],
+          "description": "Traces the communication between VS Code and the language server."
         }
       }
     },
-    "commands": [
-      {
-        "command": "rome.cacheClear",
-        "title": "rome cache clear"
-      }
-    ]
+    "commands": []
   },
-  "dependencies": {}
+  "dependencies": {
+    "rome": "^10.0.1"
+  }
 }

@@ -7,7 +7,7 @@
 		],
 		"module": "commonjs",
 		"declaration": false,
-		"sourceMap": true,
+		"sourceMap": false,
 		"outDir": "lib",
 		"strict": true,
 		"moduleResolution": "node",

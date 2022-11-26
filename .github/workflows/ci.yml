@@ -32,6 +32,9 @@ jobs:
       - name: yarn install
         run: |
           yarn
+      - name: rome format
+        run: |
+          yarn fmt
       - name: rome check
         run: |
-          yarn run rome check
+          yarn lint
