@@ -14,6 +14,7 @@
   "scripts": {
     "fmt": "rome format --write ./src",
     "check": "rome check ./src",
+    "schema": "curl -sSLO https://raw.githubusercontent.com/rome/tools/main/editors/vscode/configuration_schema.json",
     "build": "node esbuild.js",
     "prepare": "node esbuild.js"
   },
