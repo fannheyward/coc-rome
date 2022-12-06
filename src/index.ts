@@ -1,12 +1,15 @@
+import { spawn } from "child_process";
 import {
 	ExtensionContext,
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
 	services,
+	StreamInfo,
 	workspace,
 } from "coc.nvim";
 import { existsSync } from "fs";
+import { connect, type Socket } from "net";
 import { join } from "path";
 
 type Architecture = "x64" | "arm64";
@@ -69,6 +72,45 @@ function resolveRomeBin(): string {
 	return "";
 }
 
+async function getSocketPath(command: string): Promise<string> {
+	const tmpdir = (await workspace.nvim.eval("$TMPDIR")) as string;
+	const child = spawn(command, ["__print_socket"], {
+		stdio: "pipe",
+		env: { ...process.env, TMPDIR: tmpdir },
+	});
+	return new Promise((resolve, reject) => {
+		child.once("error", (err) => {
+			console.error(err);
+			reject("");
+		});
+
+		child.stdout.on("data", (data) => {
+			resolve(data.toString("utf-8").trim());
+		});
+	});
+}
+
+async function createMessageTransports(command: string): Promise<StreamInfo> {
+	const socketPath = await getSocketPath(command);
+	if (!socketPath) {
+		throw new Error("Could not get socket path from `rome __print_socket`");
+	}
+
+	let socket: Socket;
+	try {
+		socket = connect(socketPath);
+	} catch (err) {
+		throw new Error(`Could not connect to the Rome server at: ${socketPath}`);
+	}
+
+	await new Promise((resolve, reject) => {
+		socket.once("ready", resolve);
+		socket.once("error", (err) => reject(err));
+	});
+
+	return { writer: socket, reader: socket };
+}
+
 export async function activate(context: ExtensionContext): Promise<void> {
 	const enable = workspace.getConfiguration("rome").get<boolean>("enable");
 	if (!enable) {
@@ -80,7 +122,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
 		return;
 	}
 
-	const serverOptions: ServerOptions = { command, args: ["lsp-proxy"] };
+	const serverOptions: ServerOptions = createMessageTransports.bind(
+		undefined,
+		command,
+	);
 	const clientOptions: LanguageClientOptions = {
 		progressOnInitialization: true,
 		documentSelector: [
