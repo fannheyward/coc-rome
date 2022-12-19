@@ -588,6 +588,17 @@
             }
           ]
         },
+        "noAssignInExpressions": {
+          "description": "Disallow assignments in expressions.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noBannedTypes": {
           "description": "Disallow certain types.",
           "anyOf": [
@@ -599,8 +610,19 @@
             }
           ]
         },
-        "noConditionalAssignment": {
-          "description": "Disallow assignment operators in conditional expressions.",
+        "noClassAssign": {
+          "description": "Disallow reassigning class members.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noCommaOperator": {
+          "description": "Disallow comma operator.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -622,7 +644,7 @@
           ]
         },
         "noConstructorReturn": {
-          "description": "Disallow returning a value from a constructor",
+          "description": "Disallow returning a value from a constructor.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -753,6 +775,17 @@
             }
           ]
         },
+        "noSelfCompare": {
+          "description": "Disallow comparisons where both sides are exactly the same.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noSetterReturn": {
           "description": "Disallow returning a value from a setter",
           "anyOf": [
@@ -786,6 +819,17 @@
             }
           ]
         },
+        "noUselessSwitchCase": {
+          "description": "Disallow useless case in switch statements.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noVar": {
           "description": "Disallow the use of var",
           "anyOf": [
@@ -799,6 +843,17 @@
         },
         "noVoidTypeReturn": {
           "description": "Disallow returning a value from a function with the return type 'void'",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noWith": {
+          "description": "Disallow with statements in non-strict contexts.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -905,6 +960,17 @@
         },
         "useExponentiationOperator": {
           "description": "Disallow the use of Math.pow in favor of the ** operator.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useHookAtTopLevel": {
+          "description": "Enforce that all React hooks are being called from the Top Level component functions.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
