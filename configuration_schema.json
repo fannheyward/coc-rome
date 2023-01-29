@@ -742,6 +742,17 @@
             }
           ]
         },
+        "noGlobalObjectCalls": {
+          "description": "Disallow calling global object properties as functions",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noHeaderScope": {
           "description": "Check that the scope attribute is only used on th elements.",
           "anyOf": [
@@ -799,6 +810,17 @@
         },
         "noPrecisionLoss": {
           "description": "Disallow literal numbers that lose precision",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noPrototypeBuiltins": {
+          "description": "Disallow direct use of Object.prototype builtins.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -887,6 +909,17 @@
         },
         "noUnsafeFinally": {
           "description": "Disallow control flow statements in finally blocks.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUnusedLabels": {
+          "description": "Disallow unused labels.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1114,6 +1147,17 @@
         },
         "useValidLang": {
           "description": "Ensure that the attribute passed to the lang attribute is a correct ISO language and/or country.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useYield": {
+          "description": "Require generator functions to contain yield.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
