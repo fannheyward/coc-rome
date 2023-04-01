@@ -22,7 +22,7 @@
     "@types/node": "^18.11.9",
     "coc.nvim": "^0.0.83-next.9",
     "esbuild": "^0.17.5",
-    "rome": "^11.0.0",
+    "rome": "^12.0.0",
     "typescript": "^5.0.3"
   },
   "activationEvents": [
