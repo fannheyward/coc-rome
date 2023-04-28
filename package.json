@@ -55,6 +55,11 @@
           "default": null,
           "description": "Custom rome binary path"
         },
+        "rome.requireConfiguration": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Require a Rome configuration file to enable syntax errors, formatting and linting. Requires Rome 12 or newer."
+        },
         "rome.trace.server": {
           "type": "string",
           "default": "off",

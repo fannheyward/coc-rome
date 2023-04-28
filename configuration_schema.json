@@ -65,6 +65,17 @@
           "type": "null"
         }
       ]
+    },
+    "vcs": {
+      "description": "The configuration of the filesystem",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/VcsConfiguration"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -92,7 +103,7 @@
           ]
         },
         "noAutofocus": {
-          "description": "Avoid the autoFocus attribute",
+          "description": "Enforce that autoFocus prop is not used on elements.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -125,7 +136,18 @@
           ]
         },
         "noHeaderScope": {
-          "description": "Check that the scope attribute is only used on th elements.",
+          "description": "The scope prop should be used only on <th> elements.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noNoninteractiveElementToInteractiveRole": {
+          "description": "Enforce that interactive ARIA roles are not assigned to non-interactive HTML elements.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -146,6 +168,28 @@
             }
           ]
         },
+        "noRedundantAlt": {
+          "description": "Enforce img alt prop does not contain the word \"image\", \"picture\", or \"photo\".",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noSvgWithoutTitle": {
+          "description": "Enforces the usage of the title element for the svg element.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "recommended": {
           "description": "It enables the recommended rules for this group",
           "type": [
@@ -154,7 +198,7 @@
           ]
         },
         "useAltText": {
-          "description": "It asserts that alternative text to images or areas, help to rely on to screen readers to understand the purpose and the context of the image.",
+          "description": "Enforce that all elements that require alternative text have meaningful information to relay back to the end user.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -165,7 +209,18 @@
           ]
         },
         "useAnchorContent": {
-          "description": "Enforce that anchor elements have content and that the content is accessible to screen readers.",
+          "description": "Enforce that anchors have content and that the content is accessible to screen readers.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useAriaPropsForRole": {
+          "description": "Enforce that elements with ARIA roles must have all required ARIA attributes for that role.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -187,7 +242,18 @@
           ]
         },
         "useHtmlLang": {
-          "description": "Enforce that html element has lang attribute. This allows users to choose a language other than the default.",
+          "description": "Enforce that html element has lang attribute.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useIframeTitle": {
+          "description": "Enforces the usage of the attribute title for the element iframe.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -198,7 +264,7 @@
           ]
         },
         "useKeyWithClickEvents": {
-          "description": "Enforce to have the onClick mouse event with the onKeyUp, the onKeyDown, or the onKeyPress keyboard event.",
+          "description": "Enforce onClick is accompanied by at least one of the following: onKeyUp, onKeyDown, onKeyPress.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -209,7 +275,18 @@
           ]
         },
         "useKeyWithMouseEvents": {
-          "description": "Enforce that onMouseOver/onMouseOut are accompanied by onFocus/onBlur for keyboard-only users. It is important to take into account users with physical disabilities who cannot use a mouse, who use assistive technology or screenreader.",
+          "description": "Enforce onMouseOver / onMouseOut are accompanied by onFocus / onBlur.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useMediaCaption": {
+          "description": "Enforces that audio and video elements must have a track for captions.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -221,6 +298,28 @@
         },
         "useValidAnchor": {
           "description": "Enforce that all anchors are valid, and they are navigable elements.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useValidAriaProps": {
+          "description": "Ensures that ARIA properties aria-* are all valid.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useValidLang": {
+          "description": "Ensure that the attribute passed to the lang attribute is a correct ISO language and/or country.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -254,6 +353,17 @@
             }
           ]
         },
+        "noExtraSemicolon": {
+          "description": "Typing mistakes and misunderstandings about where semicolons are required can lead to semicolons that are unnecessary. While not technically an error, extra semicolons can cause confusion when reading code.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noMultipleSpacesInRegularExpressionLiterals": {
           "description": "Disallow unclear usage of multiple space characters in regular expression literals",
           "anyOf": [
@@ -265,8 +375,74 @@
             }
           ]
         },
+        "noUselessCatch": {
+          "description": "Disallow unnecessary catch clauses.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUselessConstructor": {
+          "description": "Disallow unnecessary constructors.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noUselessFragments": {
           "description": "Disallow unnecessary fragments",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUselessLabel": {
+          "description": "Disallow unnecessary labels.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUselessRename": {
+          "description": "Disallow renaming import, export, and destructured assignments to the same name.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUselessSwitchCase": {
+          "description": "Disallow useless case in switch statements.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noWith": {
+          "description": "Disallow with statements in non-strict contexts.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -373,6 +549,39 @@
             }
           ]
         },
+        "noGlobalObjectCalls": {
+          "description": "Disallow calling global object properties as functions",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noInnerDeclarations": {
+          "description": "Disallow function and var declarations in nested blocks.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noInvalidConstructorSuper": {
+          "description": "Prevents the incorrect use of super() inside classes. It also checks whether a call super() is missing from classes that extends other constructors.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noNewSymbol": {
           "description": "Disallow new operators with the Symbol object",
           "anyOf": [
@@ -428,6 +637,17 @@
             }
           ]
         },
+        "noSwitchDeclarations": {
+          "description": "Disallow lexical declarations in switch clauses.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noUndeclaredVariables": {
           "description": "Prevents the usage of variables that haven't been declared inside the document",
           "anyOf": [
@@ -461,8 +681,41 @@
             }
           ]
         },
+        "noUnreachableSuper": {
+          "description": "Ensures the super() constructor is called exactly once on every code path in a class constructor before this is accessed if the class has a superclass",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noUnsafeFinally": {
           "description": "Disallow control flow statements in finally blocks.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUnsafeOptionalChaining": {
+          "description": "Disallow the use of optional chaining in contexts where the undefined value is not allowed.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noUnusedLabels": {
+          "description": "Disallow unused labels.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -522,6 +775,17 @@
               "type": "null"
             }
           ]
+        },
+        "useYield": {
+          "description": "Require generator functions to contain yield.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       }
     },
@@ -531,14 +795,14 @@
       "properties": {
         "ignore": {
           "description": "A list of Unix shell style patterns. Rome tools will ignore files/folders that will match these patterns.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StringSet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "maxSize": {
           "description": "The maximum allowed size for source code files in bytes. Files above this limit will be ignored for performance reason. Defaults to 1 MiB",
@@ -558,46 +822,61 @@
       "properties": {
         "enabled": {
           "default": true,
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "formatWithErrors": {
           "description": "Stores whether formatting should be allowed to proceed if a given file has syntax errors",
           "default": false,
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "ignore": {
           "description": "A list of Unix shell style patterns. The formatter will ignore files/folders that will match these patterns.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StringSet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "indentSize": {
           "description": "The size of the indentation, 2 by default",
           "default": 2,
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "uint8",
           "minimum": 0.0
         },
         "indentStyle": {
           "description": "The indent style.",
           "default": "tab",
-          "allOf": [
+          "anyOf": [
             {
               "$ref": "#/definitions/PlainIndentStyle"
+            },
+            {
+              "type": "null"
             }
           ]
         },
         "lineWidth": {
           "description": "What's the max width of a line. Defaults to 80.",
           "default": 80,
-          "allOf": [
+          "anyOf": [
             {
               "$ref": "#/definitions/LineWidth"
+            },
+            {
+              "type": "null"
             }
           ]
         }
@@ -619,14 +898,14 @@
         },
         "globals": {
           "description": "A list of global bindings that should be ignored by the analyzers\n\nIf defined here, they should not emit diagnostics.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StringSet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "organize_imports": {
           "anyOf": [
@@ -646,37 +925,49 @@
       "properties": {
         "quoteProperties": {
           "description": "When properties in objects are quoted. Defaults to asNeeded.",
-          "default": "asNeeded",
-          "allOf": [
+          "default": null,
+          "anyOf": [
             {
               "$ref": "#/definitions/QuoteProperties"
+            },
+            {
+              "type": "null"
             }
           ]
         },
         "quoteStyle": {
           "description": "The style for quotes. Defaults to double.",
-          "default": "double",
-          "allOf": [
+          "default": null,
+          "anyOf": [
             {
               "$ref": "#/definitions/QuoteStyle"
+            },
+            {
+              "type": "null"
             }
           ]
         },
         "semicolons": {
           "description": "Whether the formatter prints semicolons for all statements or only in for statements where it is necessary because of ASI.",
-          "default": "always",
-          "allOf": [
+          "default": null,
+          "anyOf": [
             {
               "$ref": "#/definitions/Semicolons"
+            },
+            {
+              "type": "null"
             }
           ]
         },
         "trailingComma": {
           "description": "Print trailing commas wherever possible in multi-line comma-separated syntactic structures. Defaults to \"all\".",
-          "default": "all",
-          "allOf": [
+          "default": null,
+          "anyOf": [
             {
               "$ref": "#/definitions/TrailingComma"
+            },
+            {
+              "type": "null"
             }
           ]
         }
@@ -699,18 +990,21 @@
         "enabled": {
           "description": "if `false`, it disables the feature and the linter won't be executed. `true` by default",
           "default": true,
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "ignore": {
           "description": "A list of Unix shell style patterns. The formatter will ignore files/folders that will match these patterns.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StringSet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "rules": {
           "description": "List of rules",
@@ -740,8 +1034,19 @@
             "null"
           ]
         },
-        "noAssignInExpressions": {
-          "description": "Disallow assignments in expressions.",
+        "noAccumulatingSpread": {
+          "description": "Disallow the use of spread (...) syntax on accumulators.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noAriaUnsupportedElements": {
+          "description": "Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -762,28 +1067,6 @@
             }
           ]
         },
-        "noClassAssign": {
-          "description": "Disallow reassigning class members.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noCommaOperator": {
-          "description": "Disallow comma operator.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
         "noConfusingArrow": {
           "description": "Disallow arrow functions where they could be confused with comparisons.",
           "anyOf": [
@@ -795,8 +1078,8 @@
             }
           ]
         },
-        "noConfusingLabels": {
-          "description": "Disallow labeled statements that are not loops.",
+        "noConsoleLog": {
+          "description": "Disallow the use of console.log",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -806,19 +1089,8 @@
             }
           ]
         },
-        "noDuplicateCase": {
-          "description": "Disallow duplicate case labels. If a switch statement has duplicate test expressions in case clauses, it is likely that a programmer copied a case clause but forgot to change the test expression.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noDuplicateClassMembers": {
-          "description": "Disallow duplicate class members.",
+        "noConstantCondition": {
+          "description": "Disallow constant expressions in conditions",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -839,85 +1111,8 @@
             }
           ]
         },
-        "noExtraLabels": {
-          "description": "Disallow unnecessary labels.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noExtraSemicolons": {
-          "description": "Typing mistakes and misunderstandings about where semicolons are required can lead to semicolons that are unnecessary. While not technically an error, extra semicolons can cause confusion when reading code.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noGlobalObjectCalls": {
-          "description": "Disallow calling global object properties as functions",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noInferrableTypes": {
-          "description": "Disallow type annotations for variables, parameters, and class properties initialized with a literal expression.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noInnerDeclarations": {
-          "description": "Disallow function and var declarations in nested blocks.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noInvalidConstructorSuper": {
-          "description": "Prevents the incorrect use of super() inside classes. It also checks whether a call super() is missing from classes that extends other constructors.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noNamespace": {
-          "description": "Disallow the use of TypeScript's namespaces.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noNoninteractiveElementToInteractiveRole": {
-          "description": "Enforce that interactive ARIA roles are not assigned to non-interactive HTML elements.",
+        "noForEach": {
+          "description": "Prefer for...of statement instead of Array.forEach.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -938,74 +1133,8 @@
             }
           ]
         },
-        "noParameterAssign": {
-          "description": "Disallow reassigning function parameters.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noParameterProperties": {
-          "description": "Disallow the use of parameter properties in class constructors.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noPrototypeBuiltins": {
-          "description": "Disallow direct use of Object.prototype builtins.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noRedeclare": {
-          "description": "Disallow variable, function, class, and type redeclarations in the same scope.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noRedundantAlt": {
-          "description": "Enforce img alt prop does not contain the word \"image\", \"picture\", or \"photo\".",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
         "noRedundantRoles": {
           "description": "Enforce explicit role property is not the same as implicit/default role property on an element.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noRestrictedGlobals": {
-          "description": "This rule allows you to specify global variable names that you don’t want to use in your application.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1026,116 +1155,6 @@
             }
           ]
         },
-        "noSelfCompare": {
-          "description": "Disallow comparisons where both sides are exactly the same.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noSvgWithoutTitle": {
-          "description": "Enforces the usage of the title element for the svg element.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noSwitchDeclarations": {
-          "description": "Disallow lexical declarations in switch clauses.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUnreachableSuper": {
-          "description": "Ensures the super() constructor is called exactly once on every code path in a class constructor before this is accessed if the class has a superclass",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUnsafeOptionalChaining": {
-          "description": "Disallow the use of optional chaining in contexts where the undefined value is not allowed.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUnusedLabels": {
-          "description": "Disallow unused labels.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUselessCatch": {
-          "description": "Disallow unnecessary catch clauses.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUselessRename": {
-          "description": "Disallow renaming import, export, and destructured assignments to the same name.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noUselessSwitchCase": {
-          "description": "Disallow useless case in switch statements.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "noWith": {
-          "description": "Disallow with statements in non-strict contexts.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
         "recommended": {
           "description": "It enables the recommended rules for this group",
           "type": [
@@ -1145,17 +1164,6 @@
         },
         "useAriaPropTypes": {
           "description": "Enforce that ARIA state and property values are valid.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "useAriaPropsForRole": {
-          "description": "Enforce that elements with ARIA roles must have all required ARIA attributes for that role.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1187,8 +1195,8 @@
             }
           ]
         },
-        "useHookAtTopLevel": {
-          "description": "Enforce that all React hooks are being called from the Top Level component functions.",
+        "useGroupedTypeImport": {
+          "description": "Enforce the use of import type when an import only has specifiers with type qualifier.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1198,8 +1206,19 @@
             }
           ]
         },
-        "useIframeTitle": {
-          "description": "Enforces the usage of the attribute title for the element iframe",
+        "useHeadingContent": {
+          "description": "Enforce that heading elements (h1, h2, etc.) have content and that the content is accessible to screen readers. Accessible means that it is not hidden using the aria-hidden prop.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "useHookAtTopLevel": {
+          "description": "Enforce that all React hooks are being called from the Top Level component functions.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1220,8 +1239,8 @@
             }
           ]
         },
-        "useMediaCaption": {
-          "description": "Enforces that audio and video elements must have a track for captions.",
+        "useLiteralEnumMembers": {
+          "description": "Require all enum members to be literal values.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1231,8 +1250,8 @@
             }
           ]
         },
-        "useNamespaceKeyword": {
-          "description": "Require using the namespace keyword over the module keyword to declare TypeScript namespaces.",
+        "useLiteralKeys": {
+          "description": "Enforce the usage of a literal access to properties over computed property access.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1242,30 +1261,8 @@
             }
           ]
         },
-        "useValidAriaProps": {
-          "description": "Ensures that ARIA properties aria-* are all valid.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "useValidLang": {
-          "description": "Ensure that the attribute passed to the lang attribute is a correct ISO language and/or country.",
-          "anyOf": [
-            {
-              "$ref": "#/definitions/RuleConfiguration"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "useYield": {
-          "description": "Require generator functions to contain yield.",
+        "useSimpleNumberKeys": {
+          "description": "Disallow number literal object member names which are not base10 or uses underscore as separator",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1283,18 +1280,21 @@
         "enabled": {
           "description": "Enables the organization of imports",
           "default": false,
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "ignore": {
           "description": "A list of Unix shell style patterns. The formatter will ignore files/folders that will match these patterns.",
-          "type": [
-            "array",
-            "null"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StringSet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "additionalProperties": false
@@ -1543,6 +1543,13 @@
         "asNeeded"
       ]
     },
+    "StringSet": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
     "Style": {
       "description": "A list of rules that belong to this group",
       "type": "object",
@@ -1565,8 +1572,41 @@
             }
           ]
         },
+        "noCommaOperator": {
+          "description": "Disallow comma operator.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noImplicitBoolean": {
           "description": "Disallow implicit true values on JSX boolean attributes",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noInferrableTypes": {
+          "description": "Disallow type annotations for variables, parameters, and class properties initialized with a literal expression.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noNamespace": {
+          "description": "Disallow the use of TypeScript's namespaces.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1589,6 +1629,39 @@
         },
         "noNonNullAssertion": {
           "description": "Disallow non-null assertions using the ! postfix operator.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noParameterAssign": {
+          "description": "Disallow reassigning function parameters.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noParameterProperties": {
+          "description": "Disallow the use of parameter properties in class constructors.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noRestrictedGlobals": {
+          "description": "This rule allows you to specify global variable names that you don\u2019t want to use in your application.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1805,6 +1878,17 @@
             }
           ]
         },
+        "noAssignInExpressions": {
+          "description": "Disallow assignments in expressions.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noAsyncPromiseExecutor": {
           "description": "Disallows using an async function as a Promise executor.",
           "anyOf": [
@@ -1827,6 +1911,17 @@
             }
           ]
         },
+        "noClassAssign": {
+          "description": "Disallow reassigning class members.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noCommentText": {
           "description": "Prevent comments from being inserted as text nodes",
           "anyOf": [
@@ -1840,6 +1935,17 @@
         },
         "noCompareNegZero": {
           "description": "Disallow comparing against -0",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noConfusingLabels": {
+          "description": "Disallow labeled statements that are not loops.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1873,6 +1979,28 @@
         },
         "noDoubleEquals": {
           "description": "Require the use of === and !==",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noDuplicateCase": {
+          "description": "Disallow duplicate case labels. If a switch statement has duplicate test expressions in case clauses, it is likely that a programmer copied a case clause but forgot to change the test expression.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noDuplicateClassMembers": {
+          "description": "Disallow duplicate class members.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -1970,8 +2098,41 @@
             }
           ]
         },
+        "noPrototypeBuiltins": {
+          "description": "Disallow direct use of Object.prototype builtins.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noRedeclare": {
+          "description": "Disallow variable, function, class, and type redeclarations in the same scope.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "noRedundantUseStrict": {
           "description": "Prevents from having redundant \"use strict\".",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "noSelfCompare": {
+          "description": "Disallow comparisons where both sides are exactly the same.",
           "anyOf": [
             {
               "$ref": "#/definitions/RuleConfiguration"
@@ -2032,6 +2193,17 @@
             }
           ]
         },
+        "useNamespaceKeyword": {
+          "description": "Require using the namespace keyword over the module keyword to declare TypeScript namespaces.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/RuleConfiguration"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "useValidTypeof": {
           "description": "This rule verifies the result of typeof $expr unary expressions is being compared to valid values, either string literals containing valid type names or other typeof expressions",
           "anyOf": [
@@ -2046,12 +2218,80 @@
       }
     },
     "TrailingComma": {
-      "type": "string",
-      "enum": [
-        "all",
-        "es5",
-        "none"
+      "description": "Print trailing commas wherever possible in multi-line comma-separated syntactic structures.",
+      "oneOf": [
+        {
+          "description": "Trailing commas wherever possible (including function parameters and calls).",
+          "type": "string",
+          "enum": [
+            "all"
+          ]
+        },
+        {
+          "description": "Trailing commas where valid in ES5 (objects, arrays, etc.). No trailing commas in type parameters in TypeScript.",
+          "type": "string",
+          "enum": [
+            "es5"
+          ]
+        },
+        {
+          "description": "No trailing commas.",
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
       ]
+    },
+    "VcsClientKind": {
+      "oneOf": [
+        {
+          "description": "Integration with the git client as VCS",
+          "type": "string",
+          "enum": [
+            "git"
+          ]
+        }
+      ]
+    },
+    "VcsConfiguration": {
+      "description": "Set of properties to integrate Rome with a VCS software.",
+      "type": "object",
+      "properties": {
+        "clientKind": {
+          "description": "The kind of client.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/VcsClientKind"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "enabled": {
+          "description": "Whether Rome should integrate itself with the VCS client",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "root": {
+          "description": "The folder where Rome should check for VCS files. By default, Rome will use the same folder where `rome.json` was found.\n\nIf Rome can't find the configuration, it will attempt to use the current working directory. If no current working directory can't be found, Rome won't use the VCS integration, and a diagnostic will be emitted",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "useIgnoreFile": {
+          "description": "Whether Rome should use the VCS ignore file. When [true], Rome will ignore the files specified in the ignore file.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
