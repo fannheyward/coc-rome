@@ -143,9 +143,9 @@
   integrity sha512-yTfz71k8+9QIDzglKnMbEMMv1JUk30qfeSomgEUG2v0qDSbSq0Gs1ff0H0dysYOHLvZZmWA3IheOY/SC8fj1nA==
 
 "@types/node@14":
-  version "14.18.43"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.43.tgz#679e000d9f1d914132ea295b4a1ffdf20370ec49"
-  integrity sha512-n3eFEaoem0WNwLux+k272P0+aq++5o05bA9CfiwKPdYPB5ZambWKdWoeHy7/OJiizMhzg27NLaZ6uzjLTzXceQ==
+  version "14.18.48"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.48.tgz#ee5c7ac6e38fd2a9e6885f15c003464cf2da343c"
+  integrity sha512-iL0PIMwejpmuVHgfibHpfDwOdsbmB50wr21X71VnF5d7SsBF7WK+ZvP/SCcFm7Iwb9iiYSap9rlrdhToNAWdxg==
 
 coc.nvim@^0.0.83-next.9:
   version "0.0.83-next.9"
